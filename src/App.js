@@ -1,25 +1,24 @@
 import logo from './logo.svg';
+import Pestania from './Pestania';
 import './App.css';
 
-function App() {
+
+var App = ()=>
+{
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='contenedorPestanias'>
+        <Pestania titulo='Our services'/> 
+        <Pestania titulo='To do'/>
+        <Pestania titulo='Did you know'/>  
+      </div>
+      
     </div>
   );
 }
+
+
+
+
 
 export default App;
