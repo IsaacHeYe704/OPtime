@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import Pestania from './Pestania';
 import './App.css';
+import "./Pestania.css"
 
 
 var App = ()=>
