@@ -1,0 +1,50 @@
+.Header
+{
+    display: flex;
+    width: 100%;
+  
+}
+.Branding,.profileContainer
+{
+    padding: 3vh 7.5vw;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-bottom: 10vh;
+    align-items: center;
+   
+}
+.Branding img,.profileContainer img
+{
+    height: 17vh;
+    
+}
+.Branding h1,h4
+{
+    display: inline-block;
+}
+.Branding h4
+{
+    font-size: small;
+}
+.profileContainer
+{
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.profileContainer div
+{
+    display: flex;
+    align-items: center;
+}
+.profileContainer > div {
+    margin-left: 60px;
+}
+.profileContainer button
+{
+    height: fit-content;
+    background: transparent;
+    border: none;
+    
+}
