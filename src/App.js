@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import Pestania from './Pestania';
 import './App.css';
-import "./Pestania.css"
+import "./Pestania.css";
 
 
 var App = ()=>
@@ -9,8 +9,8 @@ var App = ()=>
   return (
     <div className="App">
       <div className='contenedorPestanias'>
-        <Pestania titulo='Our services'/> 
-        <Pestania titulo='To do'/>
+        <Pestania titulo='Our services' /> 
+        <Pestania titulo='To do' id='toDo'/>
         <Pestania titulo='Did you know'/>  
       </div>
       

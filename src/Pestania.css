@@ -1,5 +1,6 @@
 .pestania
 {
+  margin: 0 5vw;
   width: 25vw;
   display: inline-block;
   height: 70vh;
@@ -21,15 +22,18 @@ h3{
 {
   text-align: center;
 }
-.pestania:nth-child(2)
-{
-  margin-left: 10vw;
-  margin-right: 10vw;
-}
-.contenedorPestanias
-{
-  width: 95vw;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20vh;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
