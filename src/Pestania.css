@@ -10,10 +10,6 @@
   box-shadow: 10px 5px 5px rgb(59, 136, 126);
 } 
 
-.pestania:hover{
-  transform: scale(1.05);
-  transition: all .25s;
-}
 h3{
   font-size: 3.7vh;
 }
