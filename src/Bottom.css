@@ -1,0 +1,12 @@
+.Bottom{
+    margin-top: 2vh;
+    margin-right: 15vh;
+    float: right;  
+}
+
+button{
+    border: none; 
+    background: none;
+    font-family: 'Caveat', cursive;
+    font-size:larger;
+}
