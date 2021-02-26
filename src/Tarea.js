@@ -14,9 +14,9 @@ class Tarea extends Component
                    <p>{this.props.tareaTexto}</p> 
                 </div>
                 <div className="tareaContenedorAcciones">
-                    <button><i class="fa fa-check-square-o" aria-hidden="true"></i></button>
-                    <button><i class="fa fa-play" aria-hidden="true"></i></button>
-                    <button><i class="fa fa-whatsapp" aria-hidden="true"></i></button>
+                    <button><i  className="fa fa-check-square-o" aria-hidden="true"></i></button>
+                    <button><i className="fa fa-play" aria-hidden="true"></i></button>
+                    <button><i className="fa fa-whatsapp" aria-hidden="true"></i></button>
                 </div>
             </div>
         );

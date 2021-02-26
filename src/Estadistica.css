@@ -1,0 +1,11 @@
+.contenidoEstadistica img
+{
+    width: 50%;
+   
+    margin-left: auto;
+    margin-right: auto;
+}
+.contenidoEstadistica
+{
+    background-color: black;
+}

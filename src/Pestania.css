@@ -8,6 +8,7 @@
   border-radius: 10px;
   font-family: 'Akaya Kanadaka', cursive;
   box-shadow: 10px 5px 5px rgb(59, 136, 126);
+  padding: 5px;
 } 
 
 h3{
@@ -18,7 +19,12 @@ h3{
 {
   text-align: center;
 }
-
+.contenidoPestania
+{
+  height: 80%;
+  overflow-y: scroll;
+  
+}
 
 
 
