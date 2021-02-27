@@ -6,17 +6,18 @@
 }
 .Branding,.profileContainer
 {
-    padding: 3vh 7.5vw;
+    padding: 1vh 7.5vw;
     display: flex;
     flex-direction: row;
     width: 50%;
     margin-bottom: 3vh;
     align-items: center;
+    background-color: rgb(182, 240, 187);
    
 }
 .Branding img,.profileContainer img
 {
-    height: 14vh;
+    height: 10vh;
     
 }
 .Branding h1,h4

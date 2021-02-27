@@ -8,7 +8,7 @@ import Bottom from "./Bottom";
 import Tarea from './Tarea';
 import Estadistica from './Estadistica';
 import Dato from './Dato';
-
+import DailyChallenge from './DailyChallenge';
 
 
 const TareasInfo = [
@@ -39,6 +39,10 @@ const DatosInfo = [
     datoTexto:'100 muertos por Corovanirus',
     genero:'Salud'
   },
+  {
+    datoTexto:'¿Qué tiene que saber para la asignación de su cita de vacunación? Antes que nada, recuerde que la vacuna contra el covid-19 es gratuita y que su aplicación no es obligatoria, pero, como indica la Secretaría de Salud, “es una responsabilidad social con el cuidado de los demás”. También tenga en cuenta que solo las EPS, coordinadas y supervisadas por la Secretaría de Salud, aplicarán la vacuna.',
+    genero:'Salud'
+  },
 ];
 const Datos = DatosInfo.map(datosInfo => <Dato {...datosInfo}/> );
 
@@ -53,6 +57,7 @@ var App = ()=>
 
         <Pestania titulo='Our services' > 
           <Estadistica titulo='My Stats: '></Estadistica>
+          <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
         </Pestania>
 
         <Pestania titulo='To do' id='toDo'>
