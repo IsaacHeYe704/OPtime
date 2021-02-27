@@ -7,6 +7,8 @@ import Header from "./header";
 import Bottom from "./Bottom";
 import Tarea from './Tarea';
 import Estadistica from './Estadistica';
+import Dato from './Dato';
+
 
 
 const TareasInfo = [
@@ -27,10 +29,18 @@ const TareasInfo = [
     grupo:'Universidad de la Sabana'
   }, {
     tareaTexto:'Revisar de nuevo la grabación del 24-02-2021' ,
-    grupo:'calculo'
+    grupo:'Cálculo'
   },
 ];
 const Tareas = TareasInfo.map(tareaInfo =><Tarea {...tareaInfo}/> );
+
+const DatosInfo = [
+  {
+    datoTexto:'100 muertos por Corovanirus',
+    genero:'Salud'
+  },
+];
+const Datos = DatosInfo.map(datosInfo => <Dato {...datosInfo}/> );
 
 
 
@@ -40,14 +50,20 @@ var App = ()=>
     <div className="App">
       <Header />
       <div className='contenedorPestanias'>
+
         <Pestania titulo='Our services' > 
-          <Estadistica titulo='your stats'></Estadistica>
-        </Pestania> 
+          <Estadistica titulo='My Stats: '></Estadistica>
+        </Pestania>
+
         <Pestania titulo='To do' id='toDo'>
           {Tareas}
         </Pestania>
-        <Pestania titulo='Did you know'/>  
+
+        <Pestania titulo='Did you know' id='toknow'>
+        {Datos}   
+        </Pestania>           
       </div>
+      
       <Bottom />
     </div>
   );

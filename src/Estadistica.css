@@ -1,11 +1,15 @@
 .contenidoEstadistica img
 {
-    width: 50%;
-   
-    margin-left: auto;
+    width: 90%;
+    height: 30%;
+    margin-left: 7%;
     margin-right: auto;
 }
 .contenidoEstadistica
 {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+
+}
+.headerEstadistica .tituloPestania{
+    margin-left: 10%;
 }

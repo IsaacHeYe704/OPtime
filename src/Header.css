@@ -21,6 +21,7 @@
 }
 .Branding h1,h4
 {
+   
     display: inline-block;
     font-family: 'Special Elite', cursive;
 }
@@ -31,8 +32,7 @@
 .profileContainer
 {
     display: flex;
-    flex-direction: row-reverse;
-    
+    flex-direction: row-reverse;  
 }
 .profileContainer div
 {

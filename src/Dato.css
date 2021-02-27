@@ -1,0 +1,23 @@
+.datoContenedor{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    text-align: justify;
+
+    background:#cfc;
+    padding: 10px;
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);   
+    border-radius: 7px;
+}
+.datoTexto h5{
+    font-size:3.2vh;  
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 30px;
+}
+.datoTexto p{
+    font-family:"Reenie Beanie",arial,sans-serif;
+    font-size: 2.5vh;
+}
