@@ -1,6 +1,6 @@
 .pestania
 {
-  margin: 0 5vw;
+  margin: 1.5vh 5vw;
   width: 25vw;
   display: inline-block;
   height: 70vh;
@@ -11,6 +11,23 @@
   padding: 5px;
 } 
 
+::-webkit-scrollbar{
+  width: 1vh;
+}
+
+::-webkit-scrollbar-track{
+  box-shadow: grey;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: gray;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: rgb(92, 91, 91);
+}
 h3{
   font-size: 3.7vh;
 }
