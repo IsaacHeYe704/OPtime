@@ -21,12 +21,12 @@
 }
 
 ::-webkit-scrollbar-thumb{
-  background: gray;
+  background: rgba(128, 128, 128, 0.534);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover{
-  background: rgb(92, 91, 91);
+  background: rgba(92, 91, 91, 0.726);
 }
 h3{
   font-size: 3.7vh;
