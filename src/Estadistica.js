@@ -1,15 +1,15 @@
 import React from "react";
-import "./Estadistica.css";
+import Stat from "./Estadistica.module.css";
 
 
 var Estadistica = (props) =>
 {
   return(
-    <div className = "Estadistica" id={props.id}>
-      <div className ='headerEstadistica'>
-        <h3 className='tituloPestania'>{props.titulo}</h3>
+    <div className = {Stat.Estadistica} id={props.id}>
+      <div className ={Stat.headerEstadistica}>
+        <h3 className={Stat.tituloPestania}>{props.titulo}</h3>
       </div>
-      <div className ='contenidoEstadistica'>
+      <div className ={Stat.contenidoEstadistica}>
         <img src="../graficaRandom.png" />
       </div>
     </div>    

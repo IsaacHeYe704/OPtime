@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import "./DailyChallenge.css";
+import "./DailyChallenge.module.css";
 
 class DailyChallenge extends Component 
 {

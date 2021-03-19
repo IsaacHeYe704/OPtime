@@ -2,7 +2,6 @@ import logo from './logo.svg';
 
 import Pestania from './Pestania';
 import './App.css';
-import "./Pestania.css";
 import Header from "./header";
 import Bottom from "./Bottom";
 import Tarea from './Tarea';

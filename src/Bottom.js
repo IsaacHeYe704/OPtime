@@ -1,11 +1,11 @@
 import React from "react";
-import "./Bottom.css";
+import But from "./Bottom.module.css";
 
 
 var Bottom = (props) =>
 {
   return(
-    <div className = "Bottom" >
+    <div className = {But.Bottom} >
         <button>About us</button>  
     </div>    
   );
