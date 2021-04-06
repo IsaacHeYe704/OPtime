@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-
+import React, { Component } from 'react'
 import Pestania from './Pestania';
 import './App.css';
 import Header from "./header";
@@ -8,30 +8,15 @@ import Tarea from './Tarea';
 import Estadistica from './Estadistica';
 import Dato from './Dato';
 import DailyChallenge from './DailyChallenge';
+import{BrowserRouter}from'react-router-dom';
+import{Route,Link}from'react-router-dom';
+import AddTask from "./Components/AddTask/AddTask";
 
 
-const TareasInfo = [
-  {
-    tareaTexto:'Preparar el pitch de reactjs ' ,
-    grupo:'React'
-  },
-  {
-    tareaTexto:'Estudiar los temas 1 y 2 para el parcial' ,
-    grupo:'Probabilidad y estadistica'
-  },
-  {
-    tareaTexto:'Revisar diapositivas' ,
-    grupo:'Gestion de redes'
-  },
-  {
-    tareaTexto:'Pagar matricula' ,
-    grupo:'Universidad de la Sabana'
-  }, {
-    tareaTexto:'Revisar de nuevo la grabación del 24-02-2021' ,
-    grupo:'Cálculo'
-  },
-];
-const Tareas = TareasInfo.map(tareaInfo =><Tarea {...tareaInfo}/> );
+
+
+
+
 
 const DatosInfo = [
   {
@@ -45,33 +30,108 @@ const DatosInfo = [
 ];
 const Datos = DatosInfo.map(datosInfo => <Dato {...datosInfo}/> );
 
+class App extends Component {
 
-
-var App = ()=>
-{
-  return (
-    <div className="App">
+      state= 
+      {
+        TareasInfo: [
+          {
+            tareaTexto:'Preparar el pitch de reactjs ' ,
+            grupo:'React'
+          },
+          {
+            tareaTexto:'Estudiar los temas 1 y 2 para el parcial' ,
+            grupo:'Probabilidad y estadistica'
+          },
+          {
+            tareaTexto:'Revisar diapositivas' ,
+            grupo:'Gestion de redes'
+          },
+          {
+            tareaTexto:'Pagar matricula' ,
+            grupo:'Universidad de la Sabana'
+          }, {
+            tareaTexto:'Revisar de nuevo la grabación del 24-02-2021' ,
+            grupo:'Cálculo'
+          },
+        ],newTaskInfo:
+        {
+            tareaTexto:"",
+            grupo:"",
+        }
+      }
+  
+  render() {
+    return (
+      <div className="App">
       <Header />
-      <div className='contenedorPestanias'>
+      <BrowserRouter>
+        <div className='contenedorPestanias'>
 
-        <Pestania titulo='Our services' > 
-          <Estadistica titulo='My Stats: '></Estadistica>
-          <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
-        </Pestania>
+          <Pestania titulo='Our services' > 
+            <Estadistica titulo='My Stats: '></Estadistica>
+            <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
+          </Pestania>
 
-        <Pestania titulo='To do' id='toDo'>
-          {Tareas}
-        </Pestania>
+          <Pestania titulo='To do' id='toDo' button={<Link to='/addTask'><button >add</button></Link>}>
+            {this.state.TareasInfo.map(tareaInfo =><Tarea  {...tareaInfo}/> )}
+          </Pestania>
+          
+          <Pestania titulo='Did you know' id='toknow'>
+          {Datos}   
+          </Pestania> 
 
-        <Pestania titulo='Did you know' id='toknow'>
-        {Datos}   
-        </Pestania>           
-      </div>
+
+
+          <Route path="/addTask" exact>
+            <AddTask newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask}/>
+          </Route>          
+        </div>
+
+
+
+
+
+
+
+      </BrowserRouter>
+      
       
       <Bottom />
     </div>
-  );
+    )
+  }
+  updateNewTaskInfo = (event,info) =>
+  {
+    var updateInfo = 
+    {
+      ...this.state.newTaskInfo
+    }
+    updateInfo[info]= event.target.value;
+
+    this.setState({
+      newTaskInfo: updateInfo
+    });
+  }
+
+  addNewTask=()=>
+  {
+    var taskUpdated = [...this.state.TareasInfo];
+    var newTask = {...this.state.newTaskInfo};
+    (newTask['grupo']==='' )? newTask['grupo'] =document.getElementById("areaSelector").value:newTask['grupo'] =newTask['grupo'];
+    taskUpdated.push(newTask);
+    this.setState({
+      TareasInfo: taskUpdated,
+      newTaskInfo:
+        {
+          tareaTexto:"",
+            grupo:"",
+        }
+    });
+  }
 }
+
+
 
 
 

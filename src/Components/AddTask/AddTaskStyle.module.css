@@ -1,0 +1,33 @@
+.containerCortain{
+    position: absolute;
+    background-color: rgba(128, 128, 128, 0.7);
+    top:0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+
+}
+.container
+{
+    background-color: honeydew;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 100px;
+    height: 55vh;
+    overflow-y: scroll;
+}
+.container div
+{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.container div textarea
+{
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}

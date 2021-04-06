@@ -1,17 +1,27 @@
-import React from "react";
+
 import  window from "./Pestania.module.css";
 
-var Pestania = (props) =>
-{
-  return(
-    <div className = {window.pestania}  id={props.id}>
-      <div className ={window.headerPestania}>
-        <h3 className={window.tituloPestania}>{props.titulo}</h3>
-      </div>
-      <div className ={window.contenidoPestania}>
-        { props.children }
-      </div>
-    </div>    
-  );
+import React, { Component } from 'react'
+
+class Pestania extends Component {
+ 
+  componentDidMount()
+  {
+    // this.props.button.addEventListener("click", );
+  }
+  render() {
+    return (
+      <div className = {window.pestania}  id={this.props.id}>
+        <div className ={window.headerPestania}>
+          <h3 className={window.tituloPestania}>{this.props.titulo}</h3>
+        </div>
+        <div className ={window.contenidoPestania}>
+          { this.props.children }
+          {this.props.button}
+        </div>
+    </div> 
+    )
+  }
 }
+
 export default Pestania;
