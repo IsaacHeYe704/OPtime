@@ -34,10 +34,13 @@ class App extends Component {
       
       componentDidMount(){
 
-        axios.get('Data.Json')
+        let counterData = 0;
+        axios.get('Data.Json')  
         .then(response => {
           const dataUpdate = response.data.map(data => {
+            counterData+=1;
             return {
+              key: counterData,
               datoTexto: data.datoTexto,
               genero: data.genero
             }
@@ -49,13 +52,14 @@ class App extends Component {
 
 
 
-      let counter = 0;
+      let counterTask = 0;
       axios.get('Task.Json')
       .then(response => {
         const taskUpdate = response.data.map(task => {
-          counter+=1;
+          counterTask+=1;
          
           return {
+            key: counterTask,
             tareaTexto: task.tareaTexto,
             grupo: task.grupo,
           }
