@@ -13,7 +13,7 @@ class AddTask extends Component {
             <div className={AddTaskStyle.containerCortain}>
                 <div className={AddTaskStyle.container}>
                     <h1>Add a new task</h1>
-                    <Link to="/"><AiIcons.AiFillCloseCircle size="50px"/></Link>
+                    <Link to="/Home"><AiIcons.AiFillCloseCircle size="50px"/></Link>
                     <form onSubmit={null}>
                         <div>
                             <label htmlFor="taskText">what do you need to do?</label>
@@ -28,7 +28,7 @@ class AddTask extends Component {
                         </select>
                         <AiIcons.AiFillPlusCircle/>
                         </div>
-                        <Link to="/" onClick={this.props.addNewTask}><label>add task</label><BiIcons.BiTask size="50px"/></Link>
+                        <Link to="/Home" onClick={this.props.addNewTask}><label>add task</label><BiIcons.BiTask size="50px"/></Link>
                     </form>
                 </div>
                 

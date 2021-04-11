@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, { Component } from 'react'
+import React, {Component, useState } from 'react'
 import Pestania from './Pestania';
 import './App.css';
 import Header from "./header";
@@ -11,11 +11,9 @@ import DailyChallenge from './DailyChallenge';
 import{BrowserRouter}from'react-router-dom';
 import{Route,Link}from'react-router-dom';
 import AddTask from "./Components/AddTask/AddTask";
+import Login from "./Components/Login/Login";
 
-
-
-
-
+  
 
 
 const DatosInfo = [
@@ -64,40 +62,35 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Header />
       <BrowserRouter>
-        <div className='contenedorPestanias'>
+        <Route path="/" exact>
+        <Login/>
+        </Route>
+        
+           
+      <Route path="/Home">
+      <Header />
+      <div className='contenedorPestanias'>
 
-          <Pestania titulo='Our services' > 
-            <Estadistica titulo='My Stats: '></Estadistica>
-            <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
-          </Pestania>
+        <Pestania titulo='Our services' > 
+          <Estadistica titulo='My Stats: '></Estadistica>
+          <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
+        </Pestania>
 
-          <Pestania titulo='To do' id='toDo' button={<Link to='/addTask'><button >add</button></Link>}>
-            {this.state.TareasInfo.map(tareaInfo =><Tarea  {...tareaInfo}/> )}
-          </Pestania>
-          
-          <Pestania titulo='Did you know' id='toknow'>
-          {Datos}   
-          </Pestania> 
+        <Pestania titulo='To do' id='toDo' button={<Link to='/Home/addTask'><button >add</button></Link>}>
+          {this.state.TareasInfo.map(tareaInfo =><Tarea  {...tareaInfo}/> )}
+        </Pestania>
 
-
-
-          <Route path="/addTask" exact>
-            <AddTask newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask}/>
-          </Route>          
+        <Pestania titulo='Did you know' id='toknow'>
+        {Datos}   
+        </Pestania> 
+        <Route path="/Home/addTask" exact>
+          <AddTask newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask}/>
+        </Route>          
         </div>
-
-
-
-
-
-
-
+        <Bottom/>
+      </Route>    
       </BrowserRouter>
-      
-      
-      <Bottom />
     </div>
     )
   }
