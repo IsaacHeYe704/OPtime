@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import React, {Component, useState } from 'react'
 import Pestania from './Pestania';
 import './App.css';
@@ -12,6 +12,7 @@ import{BrowserRouter}from'react-router-dom';
 import{Route,Link}from'react-router-dom';
 import AddTask from "./Components/AddTask/AddTask";
 import Login from "./Components/Login/Login";
+import axios from './Instace/AxiosInstance'
 
   
 
@@ -33,30 +34,17 @@ class App extends Component {
       state= 
       {
         TareasInfo: [
-          {
-            tareaTexto:'Preparar el pitch de reactjs ' ,
-            grupo:'React'
-          },
-          {
-            tareaTexto:'Estudiar los temas 1 y 2 para el parcial' ,
-            grupo:'Probabilidad y estadistica'
-          },
-          {
-            tareaTexto:'Revisar diapositivas' ,
-            grupo:'Gestion de redes'
-          },
-          {
-            tareaTexto:'Pagar matricula' ,
-            grupo:'Universidad de la Sabana'
-          }, {
-            tareaTexto:'Revisar de nuevo la grabación del 24-02-2021' ,
-            grupo:'Cálculo'
-          },
-        ],newTaskInfo:
+        ],
+        newTaskInfo:
         {
             tareaTexto:"",
             grupo:"",
         }
+      }
+
+      componentDidMount(){
+        axios.get()
+        .then(console.log((Response)))
       }
   
   render() {
