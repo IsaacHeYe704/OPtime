@@ -14,25 +14,15 @@ import AddTask from "./Components/AddTask/AddTask";
 import Login from "./Components/Login/Login";
 import axios from './Instace/AxiosInstance'
 
-  
 
-
-const DatosInfo = [
-  {
-    datoTexto:'100 muertos por Corovanirus',
-    genero:'Salud'
-  },
-  {
-    datoTexto:'¿Qué tiene que saber para la asignación de su cita de vacunación? Antes que nada, recuerde que la vacuna contra el covid-19 es gratuita y que su aplicación no es obligatoria, pero, como indica la Secretaría de Salud, “es una responsabilidad social con el cuidado de los demás”. También tenga en cuenta que solo las EPS, coordinadas y supervisadas por la Secretaría de Salud, aplicarán la vacuna.',
-    genero:'Salud'
-  },
-];
-const Datos = DatosInfo.map(datosInfo => <Dato {...datosInfo}/> );
 
 class App extends Component {
 
       state= 
       {
+        DataInfo: [
+        ],
+
         TareasInfo: [
         ],
         newTaskInfo:
@@ -41,13 +31,28 @@ class App extends Component {
             grupo:"",
         }
       }
-
-
+      
       componentDidMount(){
+
+        axios.get('Data.Json')
+        .then(response => {
+          const dataUpdate = response.data.map(data => {
+            return {
+              datoTexto: data.datoTexto,
+              genero: data.genero
+            }
+          });
+          this.setState({
+            DataInfo: dataUpdate
+          })
+        });
+
+
+
       let counter = 0;
       axios.get('Task.Json')
       .then(response => {
-        const usersUpdate = response.data.map(task => {
+        const taskUpdate = response.data.map(task => {
           counter+=1;
          
           return {
@@ -55,6 +60,9 @@ class App extends Component {
             grupo: task.grupo,
           }
           
+        });
+        this.setState({
+          TareasInfo: taskUpdate
         });
       })
       }
@@ -78,11 +86,11 @@ class App extends Component {
         </Pestania>
 
         <Pestania titulo='To do' id='toDo' button={<Link to='/Home/addTask'><button >add</button></Link>}>
-          {this.state.TareasInfo.map(tareaInfo =><Tarea  {...tareaInfo}/> )}
+          {this.state.TareasInfo.map(tareaInfo =><Tarea {...tareaInfo}/> )}
         </Pestania>
 
         <Pestania titulo='Did you know' id='toknow'>
-        {Datos}   
+        {this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
         </Pestania> 
         <Route path="/Home/addTask" exact>
           <AddTask newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask}/>
