@@ -42,9 +42,21 @@ class App extends Component {
         }
       }
 
+
       componentDidMount(){
-        axios.get()
-        .then(console.log((Response)))
+      let counter = 0;
+      axios.get('Task.Json')
+      .then(response => {
+        const usersUpdate = response.data.map(task => {
+          counter+=1;
+         
+          return {
+            tareaTexto: task.tareaTexto,
+            grupo: task.grupo,
+          }
+          
+        });
+      })
       }
   
   render() {

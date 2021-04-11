@@ -1,5 +1,4 @@
-{
-"TareasInfo":  [
+[
     {
       "tareaTexto":"Preparar el pitch de reactjs " ,
       "grupo":"React"
@@ -19,5 +18,4 @@
       "tareaTexto":"Revisar de nuevo la grabación del 24-02-2021" ,
       "grupo":"Cálculo"
     }
-  ]
-}
+]
