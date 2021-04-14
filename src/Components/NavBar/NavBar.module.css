@@ -1,0 +1,18 @@
+.container
+{
+    width: 1000px;
+    height: 14vh;
+    padding: 0;
+    margin-top: 0;
+    background-color:rgba(91, 156, 165);
+    display: flex;
+    justify-content: space-between;
+    padding-left:50px;
+    padding-right: 50px;
+    align-items: center;
+    display: none;
+}
+.opened
+{
+    display: inherit;
+}

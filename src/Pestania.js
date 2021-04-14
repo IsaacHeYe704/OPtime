@@ -17,6 +17,8 @@ class Pestania extends Component {
         </div>
         <div className ={window.contenidoPestania}>
           { this.props.children }
+        </div>
+        <div className={window.addTaskButton}>
           {this.props.button}
         </div>
     </div> 

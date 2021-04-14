@@ -13,7 +13,7 @@ import{Route,Link}from'react-router-dom';
 import AddTask from "./Components/AddTask/AddTask";
 import Login from "./Components/Login/Login";
 import axios from './Instace/AxiosInstance'
-
+import * as AiIcons from "react-icons/ai";
 
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
         }
       }
       
-      componentDidMount(){
+  componentDidMount(){
 
         let counterData = 0;
         axios.get('Data.Json')  
@@ -49,27 +49,24 @@ class App extends Component {
             DataInfo: dataUpdate
           })
         });
-
-
-
-      let counterTask = 0;
-      axios.get('Task.Json')
-      .then(response => {
-        const taskUpdate = response.data.map(task => {
-          counterTask+=1;
-         
-          return {
-            key: counterTask,
-            tareaTexto: task.tareaTexto,
-            grupo: task.grupo,
-          }
+        let counterTask = 0;
+        axios.get('Task.Json')
+        .then(response => {
+          const taskUpdate = response.data.map(task => {
+            counterTask+=1;
           
-        });
-        this.setState({
-          TareasInfo: taskUpdate
-        });
-      })
-      }
+            return {
+              key: counterTask,
+              tareaTexto: task.tareaTexto,
+              grupo: task.grupo,
+            }
+            
+          });
+          this.setState({
+            TareasInfo: taskUpdate
+          });
+        })
+  }
   
   render() {
     return (
@@ -89,7 +86,7 @@ class App extends Component {
           <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
         </Pestania>
 
-        <Pestania titulo='To do' id='toDo' button={<Link to='/Home/addTask'><button >add</button></Link>}>
+        <Pestania titulo='To do' id='toDo' button={<Link className="addTaskButton" to='/Home/addTask'><AiIcons.AiFillPlusCircle color='#3d3d3d' /></Link>}>
           {this.state.TareasInfo.map(tareaInfo =><Tarea {...tareaInfo}/> )}
         </Pestania>
 
@@ -118,7 +115,6 @@ class App extends Component {
       newTaskInfo: updateInfo
     });
   }
-
   addNewTask=()=>
   {
     var taskUpdated = [...this.state.TareasInfo];

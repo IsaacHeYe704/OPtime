@@ -9,6 +9,7 @@
   font-family: 'Akaya Kanadaka', cursive;
   box-shadow: 10px 5px 5px rgb(59, 136, 126);
   padding: 5px;
+  padding-bottom: 20px;
 } 
 
 ::-webkit-scrollbar{
@@ -40,6 +41,14 @@ h3{
 {
   height: 80%;
   overflow-y: scroll;
+  
+}
+.addTaskButton
+{
+  text-align: center;
+  font-size: 32px;
+  margin-right: 0px;
+  margin-bottom: 10px;
   
 }
 
