@@ -19,17 +19,14 @@ class Login extends Component{
         <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>¿No tienes cuenta? Es sencillo</button></div>
         <div className={LoginModule.componente}>
            <form onSubmit={this.submitForm.bind(this)}>
-               <div className="form">
-                    <div className="form-group">
-                        <label htmlFor="name"></label>
+               <div>
+                    <div>
                         <input type="text" placeholder="Name"/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="email"></label>
+                    <div>
                         <input type="email" placeholder="Email"/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password"></label>
+                    <div>
                         <input type="password" placeholder="Password"/>
                     </div>
                     <button className={LoginModule.ingreso} type="submit">Ingresar</button>
