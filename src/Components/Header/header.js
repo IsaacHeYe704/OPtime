@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Head from "./Header.module.css";
-import NavBar from "./Components/NavBar/NavBar";
+import NavBar from "./NavBar/NavBar";
 
 class header extends Component {
   state =

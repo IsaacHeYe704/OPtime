@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
+import LoginModule from './Login.module.css';
+import * as FaIcons from "react-icons/fa";
+import * as FcIcons from "react-icons/fc";
 
 class Login extends Component{
 
@@ -11,24 +14,36 @@ class Login extends Component{
       render() {
     return (
         <div>
+        <h2 className={LoginModule.message}>Welcome to OpTime!</h2>
+        <h2 className={LoginModule.message}>Iniciar sesión</h2>
+        <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>¿No tienes cuenta? Es sencillo</button></div>
+        <div className={LoginModule.componente}>
            <form onSubmit={this.submitForm.bind(this)}>
                <div className="form">
-                    <h2>Login</h2>
                     <div className="form-group">
-                        <label htmlFor="name">Name:</label>
-                        <input type="text" name="name" id="name"/>
+                        <label htmlFor="name"></label>
+                        <input type="text" placeholder="Name"/>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" id="email"/>
+                        <label htmlFor="email"></label>
+                        <input type="email" placeholder="Email"/>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" name="password" id="password"/>
-                        <button type="submit">Ingresar</button>
+                        <label htmlFor="password"></label>
+                        <input type="password" placeholder="Password"/>
                     </div>
+                    <button className={LoginModule.ingreso} type="submit">Ingresar</button>
                </div>
            </form> 
+           <div className={LoginModule.verticalLine}/>
+           <div className={LoginModule.redes}>
+               <button className={LoginModule.facebook}> <FaIcons.FaFacebookF color="#FFFFFF"/>Continuar con facebook</button>
+               <button className={LoginModule.google}><FcIcons.FcGoogle />Continuar con google</button>
+           </div>
+           </div>
+           <div className={LoginModule.butoncito}>
+           <button className={LoginModule.fonts}>¿Perdiste tu contraseña?</button>
+           </div>
         </div>
     )
 }

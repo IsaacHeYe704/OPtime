@@ -1,13 +1,13 @@
 
 import React, {Component, useState } from 'react'
-import Pestania from './Pestania';
+import Pestania from './Components/Pestania/Pestania';
 import './App.css';
-import Header from "./header";
-import Bottom from "./Bottom";
-import Tarea from './Tarea';
-import Estadistica from './Estadistica';
-import Dato from './Dato';
-import DailyChallenge from './DailyChallenge';
+import Header from "./Components/Header/header";
+import Bottom from "./Components/Bottom/Bottom";
+import Tarea from './Components/Tarea/Tarea';
+import Estadistica from './Components/Estadistica/Estadistica';
+import Dato from './Components/Dato/Dato';
+import DailyChallenge from './Components/Daily Challenge/DailyChallenge';
 import{BrowserRouter}from'react-router-dom';
 import{Route,Link}from'react-router-dom';
 import AddTask from "./Components/AddTask/AddTask";

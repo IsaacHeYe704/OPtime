@@ -1,0 +1,80 @@
+.componente{
+    background-color: rgba(240, 248, 255, 0.174);
+    padding: 1em;
+    border-radius: 2vh;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin: 6vh auto 1em;
+    top: 50%;
+    left: 50%;
+    
+}
+
+.redes{
+    margin-left: 50px;
+    display: inline;
+    width: 125px;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+.ingreso{
+    background: #7fb1b0a8;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: medium;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ingreso:hover{
+    background: #7fb1b0fa;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.facebook{
+    background: #3B5998;
+    color: #FFFFFF;
+    font-size: medium;
+    font-family: 'Roboto', sans-serif;
+}
+
+.google{
+    margin-top: 1em;
+    background: #4585F4;
+    color: #FFFFFF;
+    font-size: medium;
+    font-family: 'Roboto', sans-serif;
+}
+
+.verticalLine{
+    border-left: 2px solid #9DA5AB;
+    height: 200px;
+    position: center;
+    margin-left: 50px;  
+}
+
+input{
+    border: none;
+    margin-bottom: 1em;
+    height: 30px;
+    background-color: #b6e9e86b;
+    font-family: 'Roboto', sans-serif;
+}
+
+.message{
+    text-align:center; 
+}
+
+.butoncito{
+    align-items: center;
+    display:grid;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fonts{
+    font-family: 'Roboto', sans-serif; 
+}
