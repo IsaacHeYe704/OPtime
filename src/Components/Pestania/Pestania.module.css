@@ -1,7 +1,8 @@
 .pestania
 {
   margin: 1.5vh 5vw;
-  width: 25vw;
+  width: 20vw;
+  min-width: 300px;
   display: inline-block;
   height: 70vh;
   background-color: rgb(255, 255, 255);

@@ -11,8 +11,19 @@
     padding-right: 50px;
     align-items: center;
     display: none;
+    transition: 300ms;
+    list-style: none;
+}
+.container li:hover
+{
+    border-radius: 100px;
+    padding: 10px;
+    background-color:rgba(7, 226, 255, 0.616);
+    transition: 300ms;
+    font-weight: 500;
 }
 .opened
 {
     display: inherit;
+    transition: 300ms;
 }
