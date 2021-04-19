@@ -27,3 +27,22 @@
     display: inherit;
     transition: 300ms;
 }
+@media (max-width: 1200px)
+{
+    .container
+    {
+        height: 100vh;
+        z-index: 100;
+        flex-flow: column;
+        justify-content: flex-start;
+        position: relative;
+        top: 0;
+        width: 20vw;
+        bottom: 0;
+    }
+    .container li
+    {
+        margin-top: 10px;
+        margin-bottom: 100px;
+    }
+}

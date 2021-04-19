@@ -22,8 +22,8 @@ class AddTask extends Component {
         return (
             <>
                 {this.state.showAddTask ?
-                    <div className={AddTaskStyle.containerCortain}>
-                        <div className={AddTaskStyle.container}>
+                    <div className={AddTaskStyle.containerCortain} onClick={this.props.openCloseModal}>
+                        <div className={AddTaskStyle.container}  onClick={ (event)=>{event.stopPropagation()}}>
                             <h1>Add a new task</h1>
                             <button onClick={this.props.openCloseModal}><AiIcons.AiFillCloseCircle size="50px"/></button>
                             <form onSubmit={null}>

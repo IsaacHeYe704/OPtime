@@ -16,7 +16,11 @@ class NavBar extends Component {
         )
     }
     componentWillReceiveProps(nextProps) {
-            this.setState({opened: this.props.opened});
+        if(nextProps.opened !== this.state.opened)
+        {
+            this.setState({opened: nextProps.opened});
+        }
+        
     } 
 }
 export default NavBar

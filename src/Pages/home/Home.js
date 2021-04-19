@@ -11,6 +11,7 @@ import axios from '../../Instace/AxiosInstance'
 import{Route,Link}from'react-router-dom';
 import React, { Component } from 'react'
 import HomeStyle from './Home.module.css'
+import { BiLabel } from "react-icons/bi";
 
 export class Home extends Component {
 
@@ -35,8 +36,9 @@ export class Home extends Component {
         axios.get('Data.Json')  
         .then(response => {const dataUpdate = response.data.map(data => {
             counterData+=1;
-            return { key: 
-                counterData,
+            return { 
+                key: counterData,
+                id: counterData,
                 datoTexto: data.datoTexto,
                 genero: data.genero
             }
@@ -52,6 +54,7 @@ export class Home extends Component {
             counterTask+=1;
             return {
                 key: counterTask,
+                id: counterTask,
                 tareaTexto: task.tareaTexto,
                 grupo: task.grupo,
             }
@@ -60,11 +63,20 @@ export class Home extends Component {
                 TareasInfo: taskUpdate
             });
         })
+        
+    }
+    completeTask = (id)=>
+    {
+        let updatedTask = [...this.state.TareasInfo]
+        updatedTask = updatedTask.filter(task =>task["key"] !== id);
+        console.log(updatedTask);
+        this.setState({TareasInfo: updatedTask});
     }
     openCloseModal = ()=>
     {
-         this.setState({showAddTask: !this.state.showAddTask});
+        this.setState({showAddTask: !this.state.showAddTask});
     }
+
     render() {
         return (
             <>
@@ -75,7 +87,7 @@ export class Home extends Component {
                     <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
                 </Pestania>
                 <Pestania titulo='To do' id='toDo'  button={<button onClick={this.openCloseModal}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
-                    {this.state.TareasInfo.map(tareaInfo =><Tarea {...tareaInfo}/> )}
+                    {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
                 </Pestania>
                 <Pestania titulo='Did you know' id='toknow'>
                 {this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
