@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import LoginModule from './Login.module.css';
 import * as FaIcons from "react-icons/fa";
 import * as FcIcons from "react-icons/fc";
@@ -16,7 +16,7 @@ class Login extends Component{
         <div>
         <h2 className={LoginModule.message}>Welcome to OpTime!</h2>
         <h2 className={LoginModule.message}>Iniciar sesión</h2>
-        <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>¿No tienes cuenta? Es sencillo</button></div>
+        <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>¿No tienes cuenta? Es sencillo <Link to="SignIn">crea tu cuenta</Link></button></div>
         <div className={LoginModule.componente}>
            <form onSubmit={this.submitForm.bind(this)}>
                <div>

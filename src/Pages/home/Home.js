@@ -14,7 +14,6 @@ import HomeStyle from './Home.module.css'
 import { BiLabel } from "react-icons/bi";
 
 export class Home extends Component {
-
     state=
     {
         DataInfo: [
@@ -29,7 +28,6 @@ export class Home extends Component {
         },
         showAddTask: false,
     }
-    
     componentDidMount()
     {
         let counterData = 0;
