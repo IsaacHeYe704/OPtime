@@ -25,14 +25,15 @@ class AddTask extends Component {
                     <div className={AddTaskStyle.containerCortain} onClick={this.props.openCloseModal}>
                         <div className={AddTaskStyle.container}  onClick={ (event)=>{event.stopPropagation()}}>
                             <h1>Add a new task</h1>
-                            <button onClick={this.props.openCloseModal}><AiIcons.AiFillCloseCircle size="50px"/></button>
+                            <button onClick={this.props.openCloseModal}><AiIcons.AiFillCloseCircle size="30px"/></button>
                             <form onSubmit={null}>
                                 <div>
-                                    <label htmlFor="taskText">what do you need to do?</label>
+                                    <label htmlFor="taskText">What do you need to do?</label>
                                     <textarea id="taskText" value={this.props.newTaskInfo.taskText} onChange={(event)=>{this.props.updateNewTaskInfo(event,"tareaTexto")}}></textarea>
                                 </div>
                                 <div>
-                                <label htmlFor="areaSelector">which area is this task realted?</label>
+                                <label htmlFor="areaSelector">Which area is this task related?</label>
+                                <div>
                                 <select id="areaSelector" value={this.props.newTaskInfo.area} onChange={(event)=>{this.props.updateNewTaskInfo(event,"grupo")}}>
                                     <option>react</option>
                                     <option>matematicas</option>
@@ -40,7 +41,8 @@ class AddTask extends Component {
                                 </select>
                                 <AiIcons.AiFillPlusCircle/>
                                 </div>
-                                <h1 onClick={this.updateTask}><label>add task</label><BiIcons.BiTask size="50px"/></h1>
+                                </div>
+                                <h1 onClick={this.updateTask}><BiIcons.BiTask size="50px"/></h1>
                             </form>
                         </div>
                     </div>

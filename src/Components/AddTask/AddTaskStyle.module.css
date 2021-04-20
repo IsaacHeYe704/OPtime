@@ -1,4 +1,5 @@
 .containerCortain{
+    text-align: center;
     position: absolute;
     background-color: rgba(128, 128, 128, 0.7);
     top:0;
@@ -9,23 +10,26 @@
 .container
 {
     background-color: honeydew;
-    width: 60vw;
+    width: 30vw;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     top: 100px;
     height: 55vh;
-    overflow-y: scroll;
+    border-radius: 20px;
+    box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.514);
 }
 .container div
 {
     margin-bottom: 30px;
     text-align: center;
 }
-.container div textarea
+.container div textarea, select
 {
-    width: 30%;
+    width: 60%;
     display: block;
     margin-left: auto;
     margin-right: auto;
+   border-radius: 15px;
+   border: 2px solid #aaa;
 }
