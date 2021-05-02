@@ -1,5 +1,6 @@
 import React from "react";
 import Stat from "./Estadistica.module.css";
+import Chart from "../chart/Chart.js"
 
 
 var Estadistica = (props) =>
@@ -10,7 +11,8 @@ var Estadistica = (props) =>
         <h3 className={Stat.tituloPestania}>{props.titulo}</h3>
       </div>
       <div className ={Stat.contenidoEstadistica}>
-        <img src="../graficaRandom.png" />
+        {/* <img src="../graficaRandom.png" /> */}
+        <Chart/>
       </div>
     </div>    
   );
