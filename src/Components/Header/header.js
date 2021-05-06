@@ -19,7 +19,7 @@ class header extends Component {
             <div><h4>Bienvenido Isaac</h4></div>
                 
         </div>  
-        <NavBar opened={this.state.opened}/>
+        <NavBar opened={this.state.opened} openCloseModal={(modal)=>{this.props.openCloseModal(modal)}}/>
     </div>    
     )
   }

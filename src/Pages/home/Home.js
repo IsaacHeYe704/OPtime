@@ -8,11 +8,11 @@ import * as AiIcons from "react-icons/ai";
 import AddTask from "../../Components/AddTask/AddTask";
 import Pestania from '../../Components/Pestania/Pestania';
 import axios from '../../Instace/AxiosInstance'
-import{Route,Link}from'react-router-dom';
 import React, { Component } from 'react'
 import HomeStyle from './Home.module.css'
-import { BiLabel } from "react-icons/bi";
-
+import { connect } from "react-redux";
+import MoodSelector from "../../Components/MoodSelector/MoodSelector"
+import { FaLastfmSquare } from "react-icons/fa";
 export class Home extends Component {
     state=
     {
@@ -27,6 +27,7 @@ export class Home extends Component {
             grupo:"",
         },
         showAddTask: false,
+        showMoodSelector: false,
     }
     componentDidMount()
     {
@@ -70,21 +71,29 @@ export class Home extends Component {
         console.log(updatedTask);
         this.setState({TareasInfo: updatedTask});
     }
-    openCloseModal = ()=>
+    openCloseModal = (modalName)=>
     {
-        this.setState({showAddTask: !this.state.showAddTask});
+        if(modalName==="showAddTask")
+        {
+            this.setState({showAddTask: !this.state.showAddTask});
+        }
+        if(modalName === "showMoodSelector")
+        {
+            this.setState({showMoodSelector: !this.state.showMoodSelector});
+        }
+        
     }
 
     render() {
         return (
-            <>
-                <Header />
-                <div className={HomeStyle.contenedorPestanias}>
+            <div  className={this.props.mood!=="" ? this.props.mood +"BackGround": "body"}>
+                <Header openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>
+                <div className={HomeStyle.contenedorPestanias} className={this.props.mood}>
                 <Pestania titulo='Our services' > 
                     <Estadistica titulo='My Stats: '></Estadistica>
                     <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
                 </Pestania>
-                <Pestania titulo='To do' id='toDo'  button={<button onClick={this.openCloseModal}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
+                <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
                     {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
                 </Pestania>
                 <Pestania titulo='Did you know' id='toknow'>
@@ -93,7 +102,8 @@ export class Home extends Component {
                 </div>
                 <Bottom/> 
                 <AddTask openCloseModal={this.openCloseModal} newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask} showAddTask={this.state.showAddTask}/>
-            </>
+                {this.state.showMoodSelector ? <MoodSelector openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>:null} 
+            </div>
         )
     }
     updateNewTaskInfo = (event,info) =>
@@ -124,8 +134,10 @@ export class Home extends Component {
         });
     }
 }
+const mapStateToProps = (state) => {
+    return {
+      mood: state.moodStore.mood,
+    };
+  };
 
-export default Home
-
-
-
+export default connect(mapStateToProps)(Home);
