@@ -13,11 +13,13 @@
 }
 
 .homePage{
+    color:rgba(48, 36, 36, 0.7);
     margin: 6vh auto;
     font-size: x-large;
     text-decoration: none;
+    margin: auto 1vw;
 }
 
 .homePage:hover{
-    font-size: xx-large;
+    color: rgb(33, 53, 53);
 }

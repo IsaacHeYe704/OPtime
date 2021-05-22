@@ -10,7 +10,9 @@ var NotFound = () => {
             <p/><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             <h2>Ooops...</h2>
             <p>No pudimos encontrar esta página...</p>
-            <Link className={Style.homePage} to="/">Volver</Link>
+            <p>Prueba suerte con alguno de estos links:</p>
+            <Link className={Style.homePage} to="/">Inicio de sesión </Link>
+            <Link className={Style.homePage} to="/SignIn">Regístrate </Link>
        </div>
     );
 }
