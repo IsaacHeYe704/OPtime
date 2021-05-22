@@ -1,0 +1,23 @@
+.mainContent{
+    margin: 6vh auto;
+    text-align: center;
+    font-family: 'Pattaya', sans-serif;
+    font-size: xx-large;
+    width: 50%;
+    border-radius: 1.8em;
+}
+
+.imagen{
+    border-radius: 1.8em;
+    box-shadow: 5px 5px 7px rgba(34, 32, 32, 0.7);
+}
+
+.homePage{
+    margin: 6vh auto;
+    font-size: x-large;
+    text-decoration: none;
+}
+
+.homePage:hover{
+    font-size: xx-large;
+}
