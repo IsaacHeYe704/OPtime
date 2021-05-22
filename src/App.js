@@ -11,7 +11,7 @@ import Login from "./Pages/Login/Login";
 import axios from './Instace/AxiosInstance'
 import Home from './Pages/home/Home'
 import SignIn from "./Pages/SignUp/SignUp"
-import NotFound from "./Components/NotFound/NotFoundPage";
+import NotFound from "./Pages/NotFound/NotFoundPage";
 
 class App extends Component {
 
