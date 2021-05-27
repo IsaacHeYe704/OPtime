@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
-import axios from "../../Instace/authInstance";
+import axiosAuth from "../../Instace/authInstance";
+import axiosDb from "../../Instace/realTimedbInstace";
 
 const API_KEY = "AIzaSyD9p88bcLFVNtfqSdbGXWrVaQWfRysGHKE";
 
@@ -48,7 +49,7 @@ const saveSignUp = (userName, token, localId) => {
 export const logIn = (authData, onSuccessCallback) => {
   return (dispatch) => {
     dispatch(startAuthLoading());
-    axios
+    axiosAuth
       .post("/accounts:signInWithPassword?key=" + API_KEY, authData)
       .then((response) => {
         const userEmail = authData.email;
@@ -81,10 +82,10 @@ export const logIn = (authData, onSuccessCallback) => {
   };
 };
 
-export const signUp = (authData, onSuccessCallback) => {
+export const signUp = (authData, onSuccessCallback,profileName) => {
   return (dispatch) => {
     dispatch(startAuthLoading());
-    axios
+    axiosAuth
       .post("/accounts:signUp?key=" + API_KEY, authData)
       .then((response) => {
         const userEmail = authData.email;
@@ -95,7 +96,12 @@ export const signUp = (authData, onSuccessCallback) => {
           userEmail,
           localId,
         };
-
+        const profile=
+        {
+          email:authData.email,
+          name: profileName
+        }
+        dispatch(createProfile(profile));
         userSession = JSON.stringify(userSession);
 
         console.log(response);
@@ -141,5 +147,35 @@ export const logOut = () => {
   localStorage.setItem("userSession", "");
   return {
     type: actionTypes.LOG_OUT,
+  };
+};
+
+const startProfileLoading = () => {
+  return {
+    type: actionTypes.START_LOADING_PROFILE,
+  };
+};
+
+const endProfileLoading  = () => {
+  return {
+    type: actionTypes.END_LOADING_PROFILE,
+  };
+};
+
+export const createProfile = (post) => {
+  return (dispatch) => {
+    dispatch(startProfileLoading(0));
+
+    axiosDb
+      .post("/profile.json", post)
+      .then((response) => {
+        console.log(response);
+        dispatch(endProfileLoading());
+      })
+      .catch((error) => {
+        console.log(error);
+
+        dispatch(endProfileLoading());
+      });
   };
 };

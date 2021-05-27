@@ -3,6 +3,7 @@ import updateObject from "../utility";
 
 const initialState = {
   isUserLoggedIn: false,
+  name:"",
   userLoggedIn: {
     userName: "",
     idToken: "",
@@ -34,13 +35,10 @@ const signUp = (state, action) => {
   });
 };
 
-const logOut = (state, action) => {
+const createProfile = (state, action) => {
   return updateObject(state, {
-    isUserLoggedIn: false,
     userLoggedIn: {
-      userName: "",
-      idToken: "",
-      localId: "",
+      name:"alberto",
     },
   });
 };
@@ -51,6 +49,17 @@ const startLoading = (state, action) => {
 
 const endLoading = (state, action) => {
   return updateObject(state, { loadingAuth: false });
+};
+
+const logOut = (state, action) => {
+  return updateObject(state, {
+    isUserLoggedIn: false,
+    userLoggedIn: {
+      userName: "",
+      idToken: "",
+      localId: "",
+    },
+  });
 };
 
 
@@ -66,6 +75,8 @@ const reducer = (state = initialState, action) => {
       return startLoading(state, action);
     case actionTypes.END_LOADING_AUTH:
       return endLoading(state, action);
+    case actionTypes.CREATE_PROFILE:
+      return createProfile(state,action);
     case "ERROR":
       return updateObject(state,{error: action.payload.error})
     default:

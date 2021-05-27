@@ -17,16 +17,19 @@ class Login extends Component{
         this.setState({
           isUserLoggedIn: nextState.isUserLoggedIn,
         });
-        if(this.state.isUserLoggedIn)
+        if(nextState.isUserLoggedIn)
         {
             this.props.history.push("/home");
         }
+        console.log("entro")
       }
       componentDidMount()
       {
+        console.log("fuera")
         if(this.state.isUserLoggedIn)
         {
             this.props.history.push("/home");
+            console.log("entro")
         }
       }
     updateLoginInfo = (event, type) => {

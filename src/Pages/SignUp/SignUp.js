@@ -59,7 +59,7 @@ class SignUp extends Component{
         {
             this.props.onUserSignUp(userData, () => {
                 this.props.history.push("/home");
-            });
+            },this.state.name);
         }else
         {
             this.setState({error: "Your passwords dont match"});
@@ -133,8 +133,8 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      onUserSignUp: (authData, onSuccessCallback) =>
-        dispatch(actionCreators.signUp(authData, onSuccessCallback)),
+      onUserSignUp: (authData, onSuccessCallback,profileName) =>
+        dispatch(actionCreators.signUp(authData, onSuccessCallback,profileName)),
       onInput:()=>{dispatch(actionCreators.setError(""))} , 
     };
   };  
