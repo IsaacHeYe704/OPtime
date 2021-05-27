@@ -12,9 +12,13 @@ import axios from './Instace/AxiosInstance'
 import Home from './Pages/home/Home'
 import SignIn from "./Pages/SignUp/SignUp"
 import NotFound from "./Pages/NotFound/NotFoundPage";
+import { connect } from "react-redux";
 
+import * as actionCreators from "./store/actions/";
 class App extends Component {
-
+  componentDidMount = () => {
+    this.props.onPersistAuthentication();
+  };
   render() {
     return (
       <div className="App">
@@ -30,5 +34,11 @@ class App extends Component {
     )
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onPersistAuthentication: () =>
+      dispatch(actionCreators.persistAuthentication()),
+  };
+};
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

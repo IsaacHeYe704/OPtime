@@ -6,15 +6,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import moodReducer from "./store/reducers/userMood";
-
+import authReducer from "./store/reducers/authentication";
+import thunk from "redux-thunk";
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   moodStore: moodReducer,
+  authStore: authReducer,
 });
 
 
 
 const store = createStore(
-  rootReducer
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
 );
 
 ReactDOM.render(

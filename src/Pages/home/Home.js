@@ -12,13 +12,14 @@ import React, { Component } from 'react'
 import HomeStyle from './Home.module.css'
 import { connect } from "react-redux";
 import MoodSelector from "../../Components/MoodSelector/MoodSelector"
-import { FaLastfmSquare } from "react-icons/fa";
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from "../../store/actions/";
 export class Home extends Component {
     state=
     {
         DataInfo: [
         ],
-
+        isUserLogedIn: this.props.isUserLogedIn,
         TareasInfo: [
         ],
         newTaskInfo:
@@ -30,6 +31,16 @@ export class Home extends Component {
         showMoodSelector: false,
     }
     componentDidMount()
+    {
+        if(!this.props.isUserLogedIn)
+        {
+            this.props.history.push('/');
+        }else
+        {
+            this.initializeApp();
+        }
+    }
+    initializeApp()
     {
         let counterData = 0;
         axios.get('Data.Json')  
@@ -62,7 +73,6 @@ export class Home extends Component {
                 TareasInfo: taskUpdate
             });
         })
-        
     }
     completeTask = (id)=>
     {
@@ -137,7 +147,12 @@ export class Home extends Component {
 const mapStateToProps = (state) => {
     return {
       mood: state.moodStore.mood,
+      isUserLogedIn: state.authStore.isUserLoggedIn,
     };
   };
-
-export default connect(mapStateToProps)(Home);
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      onLogOut: () => dispatch(actionCreators.logOut()),
+    };
+  };
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Home));
