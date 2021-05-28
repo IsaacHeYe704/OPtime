@@ -6,6 +6,7 @@ import * as FaIcons from "react-icons/fa";
 import * as FcIcons from "react-icons/fc";
 import * as actionCreators from "../../store/actions/";
 import { connect } from "react-redux";
+import Spinner from "../../Components/Spinner/Spinner"
 class Login extends Component{
     state = {
         isUserLoggedIn: this.props.isUserLoggedIn,
@@ -73,7 +74,12 @@ class Login extends Component{
                         this.updateLoginInfo(event, "password");
                         }}/>
                     </div>
-                    <button className={LoginModule.ingreso}  type="submit">Ingresar</button>
+                    { !this.props.loadingAuth ?
+                      <button className={LoginModule.ingreso}  type="submit">Ingresar</button>
+                      :
+                      <Spinner/>
+                    }
+                    
                </div>
            </form> 
            <div className={LoginModule.verticalLine}/>

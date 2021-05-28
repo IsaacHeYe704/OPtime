@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import SignUpStyle from './SignUp.module.css';
 import * as FaIcons from "react-icons/fa";
 import * as FcIcons from "react-icons/fc";
-
+import Spinner from "../../Components/Spinner/Spinner"
 import * as actionCreators from "../../store/actions/";
 
 class SignUp extends Component{
@@ -51,7 +51,6 @@ class SignUp extends Component{
       submitSignUpForm = (e) => {
         e.preventDefault()
         const userData = {
-            
             email: this.state.userName,
             password: this.state.password,
         };
@@ -107,7 +106,12 @@ class SignUp extends Component{
                             this.props.onInput();
                           }}/>
                     </div>
-                    <button className={SignUpStyle.ingreso} type="submit">Ingresar</button>
+                    { !this.props.loadingAuth ?
+                      <button className={SignUpStyle.ingreso} type="submit">Ingresar</button>
+                      :
+                      <Spinner/>
+                    }
+                    
                </div>
            </form> 
            <div className={SignUpStyle.verticalLine}/>

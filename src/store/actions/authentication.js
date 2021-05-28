@@ -24,24 +24,35 @@ export const setError = (errorMessage)=>
     } 
   };
 }
-const saveSession = (userName, token, localId) => {
+export const setName = (name)=>
+{
+  return {
+    type: actionTypes.SET_NAME,
+    payload: {
+      name: name,
+    } 
+  };
+}
+const saveSession = (userName, token, localId,profileName) => {
   return {
     type: actionTypes.LOGIN,
     payload: {
       userName: userName,
       idToken: token,
       localId: localId,
+      name: profileName,
     },
   };
 };
 
-const saveSignUp = (userName, token, localId) => {
+const saveSignUp = (userName, token, localId,name) => {
   return {
     type: actionTypes.SIGN_UP,
     payload: {
       userName: userName,
       idToken: token,
       localId: localId,
+      name: name
     },
   };
 };
@@ -61,13 +72,12 @@ export const logIn = (authData, onSuccessCallback) => {
           localId,
         };
 
-        userSession = JSON.stringify(userSession);
 
         console.log(response);
 
-        localStorage.setItem("userSession", userSession);
+        
 
-        dispatch(saveSession(userEmail, token, localId));
+        dispatch(getProfileName(userEmail, token, localId,userSession));
         dispatch(endAuthLoading());
 
         if (onSuccessCallback) {
@@ -108,7 +118,7 @@ export const signUp = (authData, onSuccessCallback,profileName) => {
 
         localStorage.setItem("userSession", userSession);
 
-        dispatch(saveSignUp(userEmail, token, localId));
+        dispatch(saveSignUp(userEmail, token, localId,profileName));
         dispatch(endAuthLoading());
 
         if (onSuccessCallback) {
@@ -136,7 +146,8 @@ export const persistAuthentication = () => {
         saveSession(
           userSession.userEmail,
           userSession.token,
-          userSession.localId
+          userSession.localId,
+          userSession.name
         )
       );
     }
@@ -174,8 +185,28 @@ export const createProfile = (post) => {
       })
       .catch((error) => {
         console.log(error);
-
         dispatch(endProfileLoading());
       });
+  };
+};
+export const getProfileName = (email,token,localId,userSession) => {
+  return (dispatch) => {
+    dispatch(startProfileLoading(0));
+
+    axiosDb
+      .get('/profile.json?orderBy="email"&equalTo="'+email+'"')
+      .then((response) => {
+        dispatch(saveSession(email, token, localId,response.data[Object.keys(response.data)[0]].name));
+        console.log(userSession);
+        userSession={token: userSession.token,
+          userEmail: userSession.userEmail,
+          localId: userSession.localId,
+          name: response.data[Object.keys(response.data)[0]].name};
+        userSession = JSON.stringify(userSession);
+        localStorage.setItem("userSession", userSession);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
   };
 };

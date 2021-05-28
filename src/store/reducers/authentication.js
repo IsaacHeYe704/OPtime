@@ -14,6 +14,7 @@ const initialState = {
 };
 
 const login = (state, action) => {
+  console.log("aca",action.payload.name);
   return updateObject(state, {
     isUserLoggedIn: true,
     userLoggedIn: {
@@ -21,8 +22,11 @@ const login = (state, action) => {
       idToken: action.payload.idToken,
       localId: action.payload.localId,
     },
+    name: action.payload.name
   });
+  
 };
+
 
 const signUp = (state, action) => {
   return updateObject(state, {
@@ -32,6 +36,7 @@ const signUp = (state, action) => {
       idToken: action.payload.idToken,
       localId: action.payload.localId,
     },
+    name:action.payload.name,
   });
 };
 

@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import MoodSelector from "../../Components/MoodSelector/MoodSelector"
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from "../../store/actions/";
+
 export class Home extends Component {
     state=
     {
@@ -32,6 +33,15 @@ export class Home extends Component {
     }
     componentDidMount()
     {
+        axios
+      .get('https://optime-react2021-default-rtdb.firebaseio.com/profile.json?orderBy="email"&equalTo="isaac4@gmail.com"')
+      .then((response) => {
+        console.log(response.data[Object.keys(response.data)[0]].name);
+      })
+      .catch((error) => {
+        console.error(error);
+
+      });
         if(!this.props.isUserLogedIn)
         {
             this.props.history.push('/');
