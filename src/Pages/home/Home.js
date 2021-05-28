@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import MoodSelector from "../../Components/MoodSelector/MoodSelector"
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from "../../store/actions/";
+import axiosDb from "../../Instace/realTimedbInstace";
 
 export class Home extends Component {
     state=
@@ -33,15 +34,8 @@ export class Home extends Component {
     }
     componentDidMount()
     {
-        axios
-      .get('https://optime-react2021-default-rtdb.firebaseio.com/profile.json?orderBy="email"&equalTo="isaac4@gmail.com"')
-      .then((response) => {
-        console.log(response.data[Object.keys(response.data)[0]].name);
-      })
-      .catch((error) => {
-        console.error(error);
+        
 
-      });
         if(!this.props.isUserLogedIn)
         {
             this.props.history.push('/');
@@ -68,13 +62,14 @@ export class Home extends Component {
             })
         });
         let counterTask = 0;
-        axios.get('Task.Json')
+        axiosDb.get('/task.json?orderBy="email"&equalTo="'+this.props.email+'"')
         .then(response => {
-            const taskUpdate = response.data.map(task => {
+            console.log(Object.keys(response.data));
+            const taskUpdate = (Object.values(response.data)).map(task => {
             counterTask+=1;
             return {
                 key: counterTask,
-                id: counterTask,
+                id: Object.keys(response.data)[counterTask-1],
                 tareaTexto: task.tareaTexto,
                 grupo: task.grupo,
             }
@@ -82,14 +77,19 @@ export class Home extends Component {
             this.setState({
                 TareasInfo: taskUpdate
             });
-        })
+        }).catch((error)=>{console.log(error)})
     }
     completeTask = (id)=>
     {
-        let updatedTask = [...this.state.TareasInfo]
-        updatedTask = updatedTask.filter(task =>task["key"] !== id);
-        console.log(updatedTask);
-        this.setState({TareasInfo: updatedTask});
+        let updatedTask = [...this.state.TareasInfo];
+        axiosDb.delete('/task/'+id+".json")
+        .then(response => {
+            updatedTask = updatedTask.filter(task =>task["id"] !== id);
+            console.log(updatedTask);
+            this.setState({TareasInfo: updatedTask});
+            console.log("eliminado")
+        }).catch((error)=>{console.log(error)})
+        
     }
     openCloseModal = (modalName)=>
     {
@@ -141,23 +141,38 @@ export class Home extends Component {
     addNewTask=()=>
     {
         var taskUpdated = [...this.state.TareasInfo];
-        var newTask = {...this.state.newTaskInfo};
+        var newTask = {...this.state.newTaskInfo,
+                        email: this.props.email
+                    };
+
         (newTask['grupo']==='' )? newTask['grupo'] =document.getElementById("areaSelector").value:newTask['grupo'] =newTask['grupo'];
-        taskUpdated.push(newTask);
-        this.setState({
-        TareasInfo: taskUpdated,
-        newTaskInfo:
-            {
-                tareaTexto:"",
-                grupo:"",
-            }
+        //send info to firebase
+        axiosDb
+        .post("/task.json", newTask)
+        .then((response) => {
+            console.log(response);
+            taskUpdated.push(newTask);
+            this.setState({
+            TareasInfo: taskUpdated,
+            newTaskInfo:
+                {
+                    tareaTexto:"",
+                    grupo:"",
+                }
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         });
+        
+        
     }
 }
 const mapStateToProps = (state) => {
     return {
       mood: state.moodStore.mood,
       isUserLogedIn: state.authStore.isUserLoggedIn,
+      email: state.authStore.userLoggedIn.userName,
     };
   };
   const mapDispatchToProps = (dispatch) => {
