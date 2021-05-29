@@ -63,7 +63,7 @@ input{
     border: none;
     margin-bottom: 1em;
     height: 30px;
-    background-color: #b6e9e86b;
+    background-color: transparent;
     font-family: 'Roboto', sans-serif;
 }
 .message{
