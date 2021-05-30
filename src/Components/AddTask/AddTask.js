@@ -35,9 +35,11 @@ class AddTask extends Component {
                                 <label htmlFor="areaSelector">Which area is this task related?</label>
                                 <div>
                                 <select id="areaSelector" value={this.props.newTaskInfo.area} onChange={(event)=>{this.props.updateNewTaskInfo(event,"grupo")}}>
-                                    <option>react</option>
-                                    <option>matematicas</option>
-                                    <option>crecimiento personal</option>
+                                    <option>Notas</option>
+                                    <option>Trabajo</option>
+                                    <option>Crecimiento Personal</option>
+                                    <option>Universidad</option>
+                                    <option>Compras</option>
                                 </select>
                                 <AiIcons.AiFillPlusCircle/>
                                 </div>

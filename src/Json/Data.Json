@@ -4,6 +4,10 @@
       "genero": "Salud"
     },
     {
+      "datoTexto":"Israel que geográficamente está ubicado en una zona desértica, exporta agua!",
+      "genero": "Geografía"
+    },
+    {
       "datoTexto": "¿Qué tiene que saber para la asignación de su cita de vacunación? Antes que nada, recuerde que la vacuna contra el covid-19 es gratuita y que su aplicación no es obligatoria, pero, como indica la Secretaría de Salud, “es una responsabilidad social con el cuidado de los demás”. También tenga en cuenta que solo las EPS, coordinadas y supervisadas por la Secretaría de Salud, aplicarán la vacuna.",
       "genero":"Salud"
     }

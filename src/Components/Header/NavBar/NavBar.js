@@ -13,7 +13,7 @@ class NavBar extends Component {
             <ul className={ `${NavBarStyle.container} ${this.state.opened ? NavBarStyle.opened: null}`}>
                     <li onClick={()=>{this.props.openCloseModal("showMoodSelector")}}>How do you feel</li>
                     <li>Profile</li>
-                    <Link onClick={this.props.onLogOut}to="/" style={{ textDecoration: 'none' ,color: "black"}}><li>sign out</li></Link>
+                    <Link onClick={this.props.onLogOut}to="/" style={{ textDecoration: 'none' ,color: "black"}}><li>Sign Out</li></Link>
             </ul>
         )
     }

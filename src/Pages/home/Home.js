@@ -29,6 +29,10 @@ export class Home extends Component {
             tareaTexto:"",
             grupo:"",
         },
+        newDataInfo: {
+            datoTexto:"",
+            genero:"",
+        },
         showAddTask: false,
         showMoodSelector: false,
     }
@@ -44,27 +48,46 @@ export class Home extends Component {
             this.initializeApp();
         }
     }
+    crearData(){
+        const data = {
+            datoTexto:"Corovanirus",
+      genero: "Muerte"
+    }
+    axiosDb.post("/data.json", data).then(
+        console.log("holaaaa"+data)
+    ) 
+    }
+
+
     initializeApp()
     {
         let counterData = 0;
-        axios.get('Data.Json')  
-        .then(response => {const dataUpdate = response.data.map(data => {
-            counterData+=1;
-            return { 
-                key: counterData,
-                id: counterData,
-                datoTexto: data.datoTexto,
-                genero: data.genero
-            }
-            });
-            this.setState({
-                DataInfo: dataUpdate
-            })
+        axiosDb.get('/data.json')  
+        .then(response => {
+            if(response.data!=null){
+                Object.values(response.data).sort( () => Math.random() - 0.5);
+                var sortedArray = Object.values(response.data);
+                sortedArray.sort( () => Math.random() - 0.5);
+                sortedArray = [sortedArray[0],sortedArray[1],sortedArray[2]];
+                
+                const dataUpdate = sortedArray.map(data => {
+                counterData+=1;
+                return { 
+                    key: counterData,
+                    id: counterData,
+                    datoTexto: data.datoTexto,
+                    genero: data.genero
+                }
+                });
+                this.setState({
+                    DataInfo: dataUpdate
+                })
+        }
         });
         let counterTask = 0;
         axiosDb.get('/task.json?orderBy="email"&equalTo="'+this.props.email+'"')
         .then(response => {
-            console.log(Object.keys(response.data));
+            // console.log(Object.keys(response.data));
             const taskUpdate = (Object.values(response.data)).map(task => {
             counterTask+=1;
             return {
@@ -120,9 +143,11 @@ export class Home extends Component {
                 {this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
                 </Pestania>           
                 </div>
-                <Bottom/> 
+                <Bottom/>
+                <button onClick={this.crearData}>Hola!!!</button> 
                 <AddTask openCloseModal={this.openCloseModal} newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask} showAddTask={this.state.showAddTask}/>
                 {this.state.showMoodSelector ? <MoodSelector openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>:null} 
+
             </div>
         )
     }
