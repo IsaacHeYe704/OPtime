@@ -2,8 +2,8 @@ import React, {useState,useEffect} from 'react';
 import {Bar} from 'react-chartjs-2';
 import { Redirect } from 'react-router';
 
-export const Chart = () => {
-    const [labels,setLabels] = useState(['Uso Celular', 'Descanso', 'Ocio']);
+export const Chart = (props) => {
+    const [labels,setLabels] = useState(props.grupos);
     const [datasets,setDatasets] = useState([
         1,
         10,
@@ -15,12 +15,14 @@ export const Chart = () => {
         'rgba(255,206,86,0.6)',
         'rgba(200,130,192,0.6)'
     ]);
-    // useEffect(() => { setDatasets(this.d)},[]);
+    useEffect(() => { setLabels(props.grupos); 
+        setDatasets(props.datasets);
+    });
         return (
         <div className = "chart">
                 <Bar
                 data={{labels:labels,datasets:[{
-                    label:'Horas',data:datasets,backgroundColor:back}
+                    label:'Pendientes',data:datasets,backgroundColor:back}
                     ]}}
                 options={{
                     maintainAspectRatio: false

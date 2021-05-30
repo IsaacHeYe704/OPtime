@@ -35,6 +35,9 @@ export class Home extends Component {
         },
         showAddTask: false,
         showMoodSelector: false,
+        grupos: [],
+        gruposSum: [],
+        challenge: "",
     }
     componentDidMount()
     {
@@ -48,18 +51,23 @@ export class Home extends Component {
             this.initializeApp();
         }
     }
+
     crearData(){
         const data = {
             datoTexto:"Corovanirus",
-      genero: "Muerte"
+            genero: "Muerte"
+        }
+        axiosDb.post("/data.json", data).then(
+            console.log("holaaaa"+data)
+        ) 
     }
-    axiosDb.post("/data.json", data).then(
-        console.log("holaaaa"+data)
-    ) 
-    }
-
-
     initializeApp()
+    {
+        this.getRandomFacts();
+        this.getTask();
+        this.getChallenge();
+    }
+    getRandomFacts()
     {
         let counterData = 0;
         axiosDb.get('/data.json')  
@@ -84,6 +92,9 @@ export class Home extends Component {
                 })
         }
         });
+    }
+    getTask()
+    {
         let counterTask = 0;
         axiosDb.get('/task.json?orderBy="email"&equalTo="'+this.props.email+'"')
         .then(response => {
@@ -100,6 +111,44 @@ export class Home extends Component {
             this.setState({
                 TareasInfo: taskUpdate
             });
+            console.log(taskUpdate);
+            this.getStats(taskUpdate);
+        }).catch((error)=>{console.log(error)})
+    }
+    getStats(tasks)
+    {
+        let grupos =[];
+        let gruposSum =[];
+        
+        tasks.forEach(theTask => {
+            grupos.push(theTask.grupo);
+        });
+        let gruposNotRepeated = new Set(grupos);
+        grupos = [...gruposNotRepeated];
+        this.setState({grupos: grupos});
+
+        grupos.forEach((grupo,index) =>{
+            gruposSum[index] = 0;
+        });
+        tasks.forEach(theTask => {
+            grupos.forEach((grupo,index) =>{
+                if(theTask.grupo === grupo)
+                {
+                    gruposSum[index] += 1;
+                }
+            });
+        });
+        this.setState({gruposSum: gruposSum});
+    }
+    getChallenge()
+    {
+        axiosDb.get('/challenge.json')
+        .then(response => {
+            // console.log(Object.keys(response.data));
+            var responseArray = Object.values(response.data);
+            var item = responseArray[Math.floor(Math.random() * responseArray.length)];
+            console.log("challenge",item);
+            this.setState({challenge: item.Texto});
         }).catch((error)=>{console.log(error)})
     }
     completeTask = (id)=>
@@ -132,8 +181,8 @@ export class Home extends Component {
                 <Header openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>
                 <div className={HomeStyle.contenedorPestanias} className={this.props.mood}>
                 <Pestania titulo='Our services' > 
-                    <Estadistica titulo='My Stats: '></Estadistica>
-                    <DailyChallenge challengeTexto='Realiza 5 repeticiones de 10 sentadillas'></DailyChallenge>
+                    <Estadistica titulo='My Stats: ' grupos={this.state.grupos} gruposSum={this.state.gruposSum}></Estadistica>
+                    <DailyChallenge challengeTexto={this.state.challenge}></DailyChallenge>
                 </Pestania>
                 <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
                     {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
