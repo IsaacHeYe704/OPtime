@@ -123,8 +123,7 @@ export class Home extends Component {
         if(modalName === "showMoodSelector")
         {
             this.setState({showMoodSelector: !this.state.showMoodSelector});
-        }
-        
+        }        
     }
 
     render() {

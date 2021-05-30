@@ -68,6 +68,15 @@ class SignUp extends Component{
     render() {
     return (
         <div>
+        <ul className="background">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
         <h2 className={SignUpStyle.message}>Welcome to OpTime!</h2>
         <h2 className={SignUpStyle.message}>Create an acount</h2>
         <div className={SignUpStyle.butoncito}><button className={SignUpStyle.fonts}>¿Ya tienes cuenta? <Link to="/">inicia sesion </Link></button></div>
@@ -123,6 +132,7 @@ class SignUp extends Component{
            <div className={SignUpStyle.butoncito}>
            <button className={SignUpStyle.fonts}>¿Perdiste tu contraseña?</button>
            </div>
+           </ul>
         </div>
     )
 }

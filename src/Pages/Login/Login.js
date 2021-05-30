@@ -7,6 +7,7 @@ import * as FcIcons from "react-icons/fc";
 import * as actionCreators from "../../store/actions/";
 import { connect } from "react-redux";
 import Spinner from "../../Components/Spinner/Spinner"
+import "./Login.css"
 class Login extends Component{
     state = {
         isUserLoggedIn: this.props.isUserLoggedIn,
@@ -56,7 +57,15 @@ class Login extends Component{
       render() {
     return (
         <div>
-        
+        <ul className="background">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>        
         <h2 className={LoginModule.message}>Welcome to OpTime!</h2>
         <h2 className={LoginModule.message}>Iniciar sesión</h2>
         <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>¿No tienes cuenta? Es sencillo <Link to="SignIn">crea tu cuenta</Link></button></div>
@@ -91,6 +100,7 @@ class Login extends Component{
            <div className={LoginModule.butoncito}>
            <button className={LoginModule.fonts} >¿Perdiste tu contraseña?</button>
            </div>
+           </ul>
         </div>
     )
 }
