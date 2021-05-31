@@ -169,17 +169,22 @@ export class Home extends Component {
         return (
             <div  className={this.props.mood!=="" ? this.props.mood +"BackGround": "body"}>
                 <Header openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>
-                <div className={HomeStyle.contenedorPestanias} className={this.props.mood}>
-                <Pestania titulo='Our services' > 
-                    <Estadistica titulo='My Stats: ' grupos={this.state.grupos} gruposSum={this.state.gruposSum}></Estadistica>
-                    <DailyChallenge challengeTexto={this.state.challenge}></DailyChallenge>
-                </Pestania>
-                <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
-                    {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
-                </Pestania>
-                <Pestania titulo='Did you know' id='toknow'>
-                {this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
-                </Pestania>           
+                <div className={HomeStyle.contenedorPestanias}  >
+                {/* className={this.props.mood} */}
+
+                    <Pestania titulo='Our services' > 
+                        <Estadistica titulo='My Stats: ' grupos={this.state.grupos} gruposSum={this.state.gruposSum}></Estadistica>
+                        <DailyChallenge challengeTexto={this.state.challenge}></DailyChallenge>
+                    </Pestania>
+                    
+                    <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
+                        {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
+                    </Pestania>
+
+                    <Pestania titulo='Did you know' id='toknow'>
+                        {this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
+                    </Pestania>
+
                 </div>
                 <Bottom/>
                 <AddTask openCloseModal={this.openCloseModal} newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask} showAddTask={this.state.showAddTask}/>
