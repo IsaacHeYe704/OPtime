@@ -51,16 +51,6 @@ export class Home extends Component {
             this.initializeApp();
         }
     }
-
-    crearData(){
-        const data = {
-            datoTexto:"Corovanirus",
-            genero: "Muerte"
-        }
-        axiosDb.post("/data.json", data).then(
-            console.log("holaaaa"+data)
-        ) 
-    }
     initializeApp()
     {
         this.getRandomFacts();
@@ -192,7 +182,6 @@ export class Home extends Component {
                 </Pestania>           
                 </div>
                 <Bottom/>
-                <button onClick={this.crearData}>Hola!!!</button> 
                 <AddTask openCloseModal={this.openCloseModal} newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask} showAddTask={this.state.showAddTask}/>
                 {this.state.showMoodSelector ? <MoodSelector openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>:null} 
 
