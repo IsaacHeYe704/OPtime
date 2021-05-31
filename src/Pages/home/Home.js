@@ -169,7 +169,7 @@ export class Home extends Component {
         return (
             <div  className={this.props.mood!=="" ? this.props.mood +"BackGround": "body"}>
                 <Header openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>
-                <div className={HomeStyle.contenedorPestanias}  >
+                <div className={HomeStyle.contenedorPestanias}   >
                 {/* className={this.props.mood} */}
 
                     <Pestania titulo='Our services' > 
