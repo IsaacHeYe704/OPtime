@@ -12,10 +12,10 @@ const MoodSelector = (props) => {
             <div className={MoodSelectorStyle.container} onClick={ (event)=>{event.stopPropagation()}}>
                 <h2>How do you feel to day</h2>
                 <div className={MoodSelectorStyle.emoji}>
-                    <FaSadCry onClick={()=>{props.changeMood("reallySad")}} className={MoodSelectorStyle.sad} size="50px" color={props.mood === "reallySad" ?"#3496eb":"black"}/>
-                    <HiEmojiSad onClick={()=>{props.changeMood("sad")}} size="50px" color={props.mood === "sad" ?"#3496eb":"black"}/>
-                    <HiEmojiHappy onClick={()=>{props.changeMood("happy")}} size="50px" color={props.mood === "happy" ?"#3496eb":"black"}/>
-                    <ImHappy2 onClick={()=>{props.changeMood("reallyHappy")}} className={MoodSelectorStyle.happy} size="40px" color={props.mood === "reallyHappy" ?"#3496eb":"black"}/>
+                    <FaSadCry onClick={()=>{props.changeMood("reallySad")}} className={MoodSelectorStyle.sad} size="50px" color={props.mood === "reallySad" ?"rgb(88 48 48)":"black"}/>
+                    <HiEmojiSad onClick={()=>{props.changeMood("sad")} } size="50px" color={props.mood === "sad" ?"rgb(88 48 48)":"black"}/>
+                    <HiEmojiHappy onClick={()=>{props.changeMood("happy")}} size="50px" color={props.mood === "happy" ?"rgb(88 48 48)":"black"}/>
+                    <ImHappy2 onClick={()=>{props.changeMood("reallyHappy")}} className={MoodSelectorStyle.happy} size="39px" color={props.mood === "reallyHappy" ?"rgb(88 48 48)":"black"}/>
                 </div>
                
             </div>

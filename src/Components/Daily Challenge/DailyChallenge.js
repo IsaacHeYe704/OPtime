@@ -15,7 +15,7 @@ export const DailyChallenge = (props) => {
                     {!iscompleted ?
                         checkUserSureness? 
                         <div>
-                            <p styconfile={{color: "red"}}>¿Está seguro que ya completó la tarea?</p> 
+                            <p className={styles.sure} styconfile={{color: "red"}}>¿Está seguro que ya completó la tarea?</p> 
                             <div className={styles.icons}>
                                 <i  style={{color: "blue"},{margin: "0 10px"}} className="fa fa-check-square-o" aria-hidden="true" onClick={()=>{setIscompleated(true)}}></i> 
                                 <i>
