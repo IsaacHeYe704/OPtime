@@ -63,8 +63,9 @@ input{
     border: none;
     margin-bottom: 1em;
     height: 30px;
-    background-color: transparent;
+    background-color: #6b6fa3;
     font-family: 'Roboto', sans-serif;
+    color: #FFF;
 }
 .message{
     text-align:center; 

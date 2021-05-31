@@ -9,15 +9,15 @@ export const DailyChallenge = (props) => {
         <div className= 'ChallengeContenedor'  >
                 <div className="ChallengeTexto">
                     <h2>Your daily challenge:</h2>
-                   <p>{iscompleted? "Ya completaste el reto de esta sesión!!!"  :props.challengeTexto}</p> 
+                   <p>{iscompleted ? <div style={{color: "green"}}>¡Ya completaste el reto de esta sesión!</div>  : props.challengeTexto}</p> 
                 </div>
                 <div className="ChallengeContenedorAcciones">
                     {!iscompleted ?
                         checkUserSureness? 
                         <div>
-                            <p>esta seguro que ya completo la tarea?</p> 
-                            <i  className="fa fa-check-square-o" aria-hidden="true" onClick={()=>{setIscompleated(true)}}></i>
-                            <FaIcon.FaWindowClose  onClick={()=>{setCheckUserSureness(false)}}/>
+                            <p style={{color: "red"}}>¿Está seguro que ya completó la tarea?</p> 
+                            <i  style={{color: "red"}} className="fa fa-check-square-o" aria-hidden="true" onClick={()=>{setIscompleated(true)}}></i>
+                            <FaIcon.FaWindowClose style={{color: "red"}}  onClick={()=>{setCheckUserSureness(false)}}/>
                             </div> 
                             :<button onClick={()=>{setCheckUserSureness(!checkUserSureness)}}><i  className="fa fa-check-square-o" aria-hidden="true"></i></button>:
                             null

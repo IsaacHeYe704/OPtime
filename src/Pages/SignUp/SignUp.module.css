@@ -58,11 +58,20 @@
 }
 
 input{
-    border: none;
+    border-bottom: 0.5px solid;
     margin-bottom: 1em;
     height: 30px;
-    background-color: #b6e9e815;
+    background-color: #ced0e956;
     font-family: 'Roboto', sans-serif;
+    color: #FFF;
+}
+
+input:hover{
+    border-bottom: none;
+}
+
+::placeholder{
+    color: #FFF;
 }
 
 .message{

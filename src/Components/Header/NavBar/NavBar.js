@@ -11,8 +11,7 @@ class NavBar extends Component {
     render() {
         return (
             <ul className={ `${NavBarStyle.container} ${this.state.opened ? NavBarStyle.opened: null}`}>
-                    <li onClick={()=>{this.props.openCloseModal("showMoodSelector")}}>How do you feel</li>
-                    <li>Profile</li>
+                    <li onClick={()=>{this.props.openCloseModal("showMoodSelector")}}>How do you feel?</li>
                     <Link onClick={this.props.onLogOut}to="/" style={{ textDecoration: 'none' ,color: "black"}}><li>Sign Out</li></Link>
             </ul>
         )
