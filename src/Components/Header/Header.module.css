@@ -43,8 +43,17 @@
     align-items: center;
     
 }
+.profileContainer div i{
+    color: rgb(54, 54, 54) ;
+}
+#user{
+    color: rgb(54, 54, 54) ;
+}
 .profileContainer > div {
     margin-left: 60px;
+}
+.bienve{
+    color: rgb(32, 31, 31) ;
 }
 .profileContainer button
 {
@@ -52,4 +61,20 @@
     background: transparent;
     border: none;
     
+}
+@media (max-width: 600px){
+    .Branding{
+        display: none;
+    }
+    .bienve{
+        margin: 0 0 0 2em !important;
+    }
+    .Branding,.profileContainer{
+        padding:0;
+        margin: 0;
+        padding-right: 1em;
+        padding-left: 0 !important;
+        background-color: rgba(91, 156, 165, 0.616);
+        width:100%;
+    }
 }

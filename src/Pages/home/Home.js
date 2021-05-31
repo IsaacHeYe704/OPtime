@@ -177,7 +177,7 @@ export class Home extends Component {
                         <DailyChallenge challengeTexto={this.state.challenge}></DailyChallenge>
                     </Pestania>
                     
-                    <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d' /></button>}>
+                    <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d'/></button>}>
                         {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
                     </Pestania>
 

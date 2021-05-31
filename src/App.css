@@ -48,3 +48,15 @@ background-size: cover;
   background-attachment: fixed;
 background-size: cover;
 }
+@media (max-width: 1360px){
+  .body{
+    height: auto;
+    width: auto;
+  }
+}
+@media (max-width: 660px){
+  .App{
+    height: auto;
+    width: 100%;
+  }
+}

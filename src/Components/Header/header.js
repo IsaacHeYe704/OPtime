@@ -15,8 +15,8 @@ class header extends Component {
             <h1 >OP TIME</h1>
         </div>  
         <div className={Head.profileContainer}>
-            <div><button onClick={()=>{this.setState({opened: !this.state.opened})}}><i className="fa fa-bars fa-1.6x" aria-hidden="true"></i></button><i className="fas fa-user fa-4x"></i> </div>
-            <div><h4>Bienvenido {this.props.profileName}</h4></div>
+            <div><button onClick={()=>{this.setState({opened: !this.state.opened})}}><i className="fa fa-bars fa-1.6x" aria-hidden="true"></i></button><i  id ={Head.user} className="fas fa-user fa-4x"></i> </div>
+            <div className={Head.bienve}><h4>Bienvenido {this.props.profileName}</h4></div>
                 
         </div>  
         <NavBar opened={this.state.opened} openCloseModal={(modal)=>{this.props.openCloseModal(modal)}}/>

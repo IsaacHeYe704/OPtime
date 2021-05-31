@@ -12,13 +12,24 @@
     align-items: center;
     display: none;
     transition: 300ms;
+    font-size: 1.1em;
     list-style: none;
+    /* background:
+    linear-gradient(45deg, #92baac 45px, transparent 45px)64px 64px,
+    linear-gradient(45deg, #92baac 45px, transparent 45px,transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
+    linear-gradient(-45deg, #92baac 23px, transparent 23px, transparent 68px,#92baac 68px,#92baac 113px,transparent 113px,transparent 158px,#92baac 158px);
+    background-color:#e1ebbd;
+    background-size: 128px 128px; */
+    /* background-color: rgb(78, 134, 141);
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
+    background-color: rgb(81, 101, 104);
+    background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
 }
 .container li:hover
 {
     border-radius: 100px;
     padding: 10px;
-    background-color:rgba(74, 94, 184, 0.616);
+    background-color:rgba(138, 169, 173, 0.616);
     transition: 300ms;
     font-weight: 500;
 }
@@ -30,14 +41,15 @@
 @media (max-width: 1200px)
 {
     .container
-    {
+    {   
+        height:170.3vh;
         height: 100vh;
         z-index: 100;
         flex-flow: column;
         justify-content: flex-start;
-        position: relative;
+        position:relative;
         top: 0;
-        width: 20vw;
+        width: 0.5vw;
         bottom: 0;
     }
     .container li

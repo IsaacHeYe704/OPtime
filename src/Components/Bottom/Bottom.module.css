@@ -1,7 +1,8 @@
 .Bottom{
-    margin-top: 2vh;
+    margin-top: 1.5vh;
     margin-right: 15vh;
     float: right;  
+    font-size: 1.3em;
 }
 
 button{

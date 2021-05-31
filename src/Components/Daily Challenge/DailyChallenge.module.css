@@ -1,5 +1,9 @@
 p{
     font-family: 'Courgette', cursive;
     font-size: 2.4vh;
-    margin: 0.2vh auto;
+    margin-bottom: 1px;
+}
+.icons {
+    margin-top: 1px;
+    padding-top: 7px;
 }
