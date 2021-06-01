@@ -35,6 +35,7 @@ export class Home extends Component {
         },
         showAddTask: false,
         showMoodSelector: false,
+        showAbout: false,
         grupos: [],
         gruposSum: [],
         challenge: "",
@@ -162,7 +163,10 @@ export class Home extends Component {
         if(modalName === "showMoodSelector")
         {
             this.setState({showMoodSelector: !this.state.showMoodSelector});
-        }        
+        }  
+        // if(modalName === "showAbout")    {
+        //     this.setState({showAbout: !this.state.showAbout});
+        // }  
     }
 
     render() {
@@ -186,7 +190,7 @@ export class Home extends Component {
                     </Pestania>
 
                 </div>
-                <Bottom/>
+                <Bottom openCloseModal={this.openCloseModal("showAbout")} />
                 <AddTask openCloseModal={this.openCloseModal} newTaskInfo={this.state.newTaskInfo} updateNewTaskInfo={this.updateNewTaskInfo} addNewTask={this.addNewTask} showAddTask={this.state.showAddTask}/>
                 {this.state.showMoodSelector ? <MoodSelector openCloseModal={(modal)=>{this.openCloseModal(modal)}}/>:null} 
 

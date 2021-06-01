@@ -1,4 +1,5 @@
 export const CHANGEMOOD = "changeMood";
+// export const SHOWABOUT = "showAbout";
 export const randomMood = "randomMood";
 export const LOGIN = "LOGIN";
 export const SIGN_UP = "SIGN_UP";
