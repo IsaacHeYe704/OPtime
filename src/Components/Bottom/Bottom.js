@@ -30,7 +30,7 @@ class Bottom extends Component {
         <div>
           <h1 >About Us</h1>
           <p>Nuestro equipo está comprometido con la optimización del tiempo de nuestros usuarios. Por esta razón ofrecemos soluciones que los ayuden a mejorar en sus horarios.</p>
-          {/* <button onClick={this.props.openCloseModal}><AiIcons.AiFillCloseCircle size="30px"/></button> */}
+          <button onClick={()=>{this.props.openCloseModal("showAbout")}}><AiIcons.AiFillCloseCircle size="30px"/></button>
         </div>
       </div>
   </div>
