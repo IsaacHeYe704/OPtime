@@ -1,8 +1,8 @@
-// import * as actionTypes from "./actionTypes";
+import * as actionTypes from "./actionTypes";
 
-// const { SHOWABOUT, } = actionTypes;
+const { SHOWABOUT, } = actionTypes;
 
-// export const increment = (payload) => ({
-//   type: SHOWABOUT,
-//   payload: payload
-// });
+export const increment = (payload) => ({
+  type: SHOWABOUT,
+  payload: payload
+});
