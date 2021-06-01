@@ -6,6 +6,7 @@
     right: 0;
     width: 100vw;
     height: 100vh;
+    position: fixed;
 }
 .container
 {
@@ -32,4 +33,13 @@
     margin-right: auto;
    border-radius: 15px;
    border: 2px solid #aaa;
+}
+@media (max-width: 1200px)
+{
+    .container
+    {   
+        width: 90vw;
+        
+    }
+    
 }

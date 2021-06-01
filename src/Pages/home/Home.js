@@ -15,6 +15,7 @@ import MoodSelector from "../../Components/MoodSelector/MoodSelector"
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from "../../store/actions/";
 import axiosDb from "../../Instace/realTimedbInstace";
+import Spinner from "../../Components/Spinner/Spinner"
 
 export class Home extends Component {
     state=
@@ -24,6 +25,7 @@ export class Home extends Component {
         isUserLogedIn: this.props.isUserLogedIn,
         TareasInfo: [
         ],
+        loadingTareas: true,
         newTaskInfo:
         {
             tareaTexto:"",
@@ -33,6 +35,7 @@ export class Home extends Component {
             datoTexto:"",
             genero:"",
         },
+        loadingData: true,
         showAddTask: false,
         showMoodSelector: false,
         showAbout: false,
@@ -61,6 +64,7 @@ export class Home extends Component {
     getRandomFacts()
     {
         let counterData = 0;
+        this.setState({loadingData: true});
         axiosDb.get('/data.json')  
         .then(response => {
             if(response.data!=null){
@@ -80,13 +84,16 @@ export class Home extends Component {
                 });
                 this.setState({
                     DataInfo: dataUpdate
-                })
+                });
+                
         }
+        this.setState({loadingData: false});
         });
     }
     getTask()
     {
         let counterTask = 0;
+        this.setState({loadingTareas: true});
         axiosDb.get('/task.json?orderBy="email"&equalTo="'+this.props.email+'"')
         .then(response => {
             // console.log(Object.keys(response.data));
@@ -102,9 +109,13 @@ export class Home extends Component {
             this.setState({
                 TareasInfo: taskUpdate
             });
+            this.setState({loadingTareas: false});
             console.log(taskUpdate);
             this.getStats(taskUpdate);
-        }).catch((error)=>{console.log(error)})
+        }).catch((error)=>{
+            console.log(error);
+            this.setState({loadingTareas: true});
+        })
     }
     getStats(tasks)
     {
@@ -150,7 +161,8 @@ export class Home extends Component {
             updatedTask = updatedTask.filter(task =>task["id"] !== id);
             console.log(updatedTask);
             this.setState({TareasInfo: updatedTask});
-            console.log("eliminado")
+            console.log("eliminado");
+            this.getStats(this.state.TareasInfo);
         }).catch((error)=>{console.log(error)})
         
     }
@@ -177,16 +189,21 @@ export class Home extends Component {
                 {/* className={this.props.mood} */}
 
                     <Pestania titulo='Our services' > 
+                        
                         <Estadistica titulo='My Stats: ' grupos={this.state.grupos} gruposSum={this.state.gruposSum}></Estadistica>
                         <DailyChallenge challengeTexto={this.state.challenge}></DailyChallenge>
                     </Pestania>
                     
                     <Pestania titulo='To do' id='toDo'  button={<button onClick={()=>{this.openCloseModal("showAddTask")}}  ><AiIcons.AiFillPlusCircle color='#3d3d3d'/></button>}>
-                        {this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
+                        { this.state.loadingTareas ?
+                            <Spinner/>:
+                        this.state.TareasInfo.map(tareaInfo =><Tarea completeTask={this.completeTask} {...tareaInfo}/> )}
                     </Pestania>
 
                     <Pestania titulo='Did you know' id='toknow'>
-                        {this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
+                        {this.state.loadingData?
+                        <Spinner/>:
+                        this.state.DataInfo.map(dataInfo => <Dato {...dataInfo}/> )}
                     </Pestania>
 
                 </div>
@@ -232,6 +249,7 @@ export class Home extends Component {
                     grupo:"",
                 }
             });
+            this.getStats(this.state.TareasInfo);
         })
         .catch((error) => {
             console.log(error);

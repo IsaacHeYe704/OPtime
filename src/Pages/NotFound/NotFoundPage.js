@@ -23,9 +23,9 @@ var NotFound = (props) => {
             <li></li>
         <img className = {Style.imagen} src={image}></img>
             <p/><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <h2>Ooops...</h2>
-            <p>No pudimos encontrar esta página...</p>
-            <p>Prueba suerte con alguno de estos links:</p>
+            <h2 className={Style.message}>Ooops...</h2>
+            <p className={Style.message}>No pudimos encontrar esta página...</p>
+            <p className={Style.message}> Prueba suerte con alguno de estos links:</p>
             <Link className={Style.homePage} to="/">Página principal </Link>
             </ul>
         : 
@@ -42,9 +42,9 @@ var NotFound = (props) => {
             <li></li>
         <img className = {Style.imagen} src={image}></img>
             <p/><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <h2>Ooops...</h2>
-            <p>No pudimos encontrar esta página...</p>
-            <p>Prueba suerte con alguno de estos links:</p>
+            <h2 className={Style.message}>Ooops...</h2>
+            <p className={Style.message}>No pudimos encontrar esta página...</p>
+            <p className={Style.message}>Prueba suerte con alguno de estos links:</p>
             <Link className={Style.homePage} to="/">Iniciar sesión </Link>
             </ul>
         }

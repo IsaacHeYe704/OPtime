@@ -39,3 +39,11 @@ background-image: url("https://www.transparenttextures.com/patterns/food.png");
 .sad{
     width: 2.6em;
 }
+@media (max-width: 1200px)
+{
+    .container
+    {   
+        width: 80vw;
+        z-index: 1000;
+    }
+}

@@ -7,7 +7,6 @@ export const Spinner = () => {
             <div className="bounce2"></div>
             <div className="bounce3"></div>
         </div>
-
     )
 }
 export default Spinner;

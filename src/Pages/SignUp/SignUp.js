@@ -79,7 +79,7 @@ class SignUp extends Component{
           <li></li>
         <h2 className={SignUpStyle.message}>Welcome to OpTime!</h2>
         <h2 className={SignUpStyle.message}>Create an acount</h2>
-        <div className={SignUpStyle.butoncito}><button className={SignUpStyle.fonts}>¿Ya tienes cuenta? <Link to="/">inicia sesion </Link></button></div>
+        <div className={SignUpStyle.butoncito}><button className={SignUpStyle.fonts}>¿Ya tienes cuenta? <Link to="/" className={SignUpStyle.link}>inicia sesion </Link></button></div>
         <div className={SignUpStyle.componente}>
            <form onSubmit={this.submitSignUpForm.bind(this)}>
                <div>

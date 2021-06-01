@@ -75,7 +75,8 @@ input:hover{
 }
 
 .message{
-    text-align:center; 
+    text-align:center;
+    color: #9DA5AB  ; 
 }
 
 .butoncito{
@@ -86,4 +87,9 @@ input:hover{
 
 .fonts{
     font-family: 'Roboto', sans-serif; 
+    color: #9DA5AB  ; 
+}
+.link
+{
+    color: #b1b5f6;
 }

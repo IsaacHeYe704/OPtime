@@ -70,7 +70,7 @@ class Login extends Component{
           <li></li>        
         <h2 className={LoginModule.message}>Welcome to OpTime!</h2>
         <h2 className={LoginModule.message}>Iniciar sesión</h2>
-        <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>Don't have an account? It's easy <Link to="SignIn">Create your account</Link></button></div>
+        <div className={LoginModule.butoncito}><button className={LoginModule.fonts}>Don't have an account? It's easy <Link className={LoginModule.link} to="SignIn">Create your account</Link></button></div>
         <div className={LoginModule.componente}>
            <form onSubmit={this.submitLoginForm.bind(this)}>
                <div>
